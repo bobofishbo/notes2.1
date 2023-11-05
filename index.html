@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>CS Academy</title>
+    <link rel="stylesheet" type="text/css" href="maincss.css">
+    
+</head>
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    
+<body>
+
+<body style="background-color: rgb(255, 255, 255); text-align: left; margin: 0px;">
+    <div class="parentContainer">
+        <img src="oNe.jpg" class="top-left" width="1440" height="40" alt="Landscape">
+        <a class="btcDesign" href="https://bobofishbo.github.io/csacademy-units/">Back to course</a>
+    </div>
+
+    <!--sidebar-->
+    <div class="sidebar">
+        <a class="active" href="#home" onclick="showContent('home')" style="font-size: 20px">| Introduction</a>
+        <a href="#surprise1" onclick="showContent('news')">| &#160 &#160 &#160 Code&Explanation</a>
+        <a href="#surprise2" onclick="showContent('contact')">| &#160 &#160 &#160 Sample Output</a>
+    </div>
+
+    <!-- Page content -->
+
+    <div class="content" id="homeContent">
+        <header>
+            <h1>2.1 File xOR</h1>
+            <div class="dotted-line"></div>
+            <p>
+            <br>
+            We will again be using the xOR encryption/decryption, only with files instead of plaintext. What <br /> 
+            this encryption function does is it takes a txt file as its input, an empty output txt file, and the key   <br />
+            generates a key of bits the same length, and creates a cipher by combining the two pieces of bit <br />
+            that will be used to encrypt the input file. <br />
+            <br>
+            Then, again using exclusive or plus the key, the input file is turned into a cipher text file. This is <br />
+            done by populating the empty output file with the cipher. <br/>
+            <br>
+            This function can also be modified to work for any file type.<br/>
+            <br>
+
+        </header>
+        
+        <a href="https://bobofishbo.github.io/csacademy-units/" target="_blank">
+            <button class="buttonClass">Back to Lessons</button>
+        </a>
+    </div>
+
+    <div class="content" id="newsContent" style="display: none;">
+        <h1>Code and Explanation</h1>
+        <div class="dotted-line"></div>
+        <br>
+        <img src="code.png" width="700" height ="400">
+    
+        <br>
+
+        
+        <button class="buttonClass" onclick="nextSection('contact')">Next Section</button>
+    </div>
+    <div class="content" id="contactContent" style="display: none;">
+        <h1>Sample Result</h1>
+        <div class="dotted-line"></div>
+        <br>
+        <img src="output.png" width="350" height ="240">
+        <br>
+
+        <a href="https://bobofishbo.github.io/csacademy-units/" target="_blank">
+            <button class="buttonClass">Back to Lessons</button>
+        </a>
+    </div>
+    
+    
+    <script>
+        // Get references to the input field, button, and output paragraph
+        var myText = document.getElementById("myText");
+        var submitBtn = document.getElementById("submitBtn");
+        var output = document.getElementById("output");
+
+        // Add a click event listener to the button
+        submitBtn.addEventListener("click", function() {
+            // Get the value of the input field
+            var inputValue = myText.value;
+
+            // Display the input value and clear the input field
+            output.textContent = "You entered: " + inputValue;
+            myText.value = ""; // Clear the input field
+        });
+    </script>
+
+
+    <script>
+        function showContent(contentId) {
+    // Hide all content elements
+    var contentElements = document.querySelectorAll('.content');
+    contentElements.forEach(function (element) {
+        element.style.display = 'none';
+    });
+
+    // Show the selected content element
+    var selectedContent = document.getElementById(contentId + 'Content');
+    if (selectedContent) {
+        selectedContent.style.display = 'block';
+    }
+
+    // Remove the 'active' class from all menu items
+    var menuItems = document.querySelectorAll('.sidebar a');
+    menuItems.forEach(function (item) {
+        item.classList.remove('active');
+    });
+
+    // Add the 'active' class to the clicked menu item
+    var clickedMenuItem = document.querySelector('.sidebar a[href="#' + contentId + '"]');
+    if (clickedMenuItem) {
+        clickedMenuItem.classList.add('active');
+    }
+}
+
+function nextSection(nextContentId) {
+    // Hide all content elements
+    var contentElements = document.querySelectorAll('.content');
+    contentElements.forEach(function (element) {
+        element.style.display = 'none';
+    });
+
+    // Show the selected content element
+    var selectedContent = document.getElementById(nextContentId + 'Content');
+    if (selectedContent) {
+        selectedContent.style.display = 'block';
+    }
+
+    // Remove the 'active' class from all menu items
+    var menuItems = document.querySelectorAll('.sidebar a');
+    menuItems.forEach(function (item) {
+        item.classList.remove('active');
+    });
+
+    // Add the 'active' class to the clicked menu item
+    var clickedMenuItem = document.querySelector('.sidebar a[href="#' + nextContentId + '"]');
+    if (clickedMenuItem) {
+        clickedMenuItem.classList.add('active');
+    }
+}
+
+
+    </script>
+</body>
+</html>
